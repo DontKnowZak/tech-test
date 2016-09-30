@@ -1,6 +1,5 @@
 require 'geckoboard'
 
-
 class DataPusher
   API_KEY = ENV['GECKOBOARD_API']
 

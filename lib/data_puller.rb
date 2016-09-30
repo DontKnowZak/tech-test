@@ -3,7 +3,7 @@ require 'json'
 
 class DataPuller
 
-  attr_reader :uri, :datastore, :url
+  attr_reader :uri, :datastore, :url, :response, :call_time
 
   def initialize
     @datastore = []
@@ -15,13 +15,6 @@ class DataPuller
     response = Net::HTTP.get(uri)
     @call_time = DateTime.now.iso8601
     @response = JSON.parse(response)
-  end
-
-  def format_values(currency, call_time = @call_time, response = @response)
-    @datastore << {
-      'last': (response[currency.upcase]['last'] * 100).floor,
-      'datetime': call_time
-    }
   end
 
 end
