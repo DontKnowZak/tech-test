@@ -17,20 +17,28 @@ private
 def pass_data(currency)
   load_formatter(currency)
   @data_puller.call_api
-  instance_variable_get("#{formatter_name(currency)}").format_values(currency, @data_puller.call_time, @data_puller.response)
+  get_formatter(currency).format_values(currency, @data_puller.call_time, @data_puller.response)
   @data_pusher.target_dataset(currency)
-  @data_pusher.push_to_dataset(instance_variable_get("#{formatter_name(currency)}").datastore)
+  @data_pusher.push_to_dataset(get_formatter(currency).datastore)
 end
 
 def load_formatter(currency)
-  formatter = instance_variable_get("#{formatter_name(currency)}")
+  formatter = get_formatter(currency)
   if !(formatter)
-    instance_variable_set("#{formatter_name(currency)}", Formatter.new)
+    set_formatter(currency)
   end
+end
+
+def get_formatter(currency)
+  instance_variable_get("#{formatter_name(currency)}")
 end
 
 def formatter_name(currency)
   formatter_name = "@#{currency}_formatter"
+end
+
+def set_formatter(currency)
+  instance_variable_set("#{formatter_name(currency)}", Formatter.new)
 end
 
 scheduler.join
