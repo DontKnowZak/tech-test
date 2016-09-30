@@ -12,13 +12,13 @@ The program dynamically creates/finds datasets and dynamically creates objects w
 
 This allows for simple additions of other currencies to the dashboard.
 
-The Datasets API types I used were money and datetime to represent the price of a Bitcoin and the time of that exchange rate respectively
+The Datasets API types I used were 'money' and 'datetime' to represent the price of a Bitcoin and the time of that exchange rate respectively.
 
-I chose Ruby to do this project as the 'getting started' documentation for Geckoboard focused on JavaScript so I wanted to give Ruby a try.
+I chose Ruby to do this project as the documentation on the Geckoboard site for  'getting started' focused on JavaScript so I wanted to use Ruby as a challenge.
 
 In order to make the program run repeatedly after set intervals I used a gem called rufus-scheduler. Given more time I would have looked further into Cron jobs and/or other possible solutions to make the program run at certain intervals and decided on which would fit best.
 
-In terms of the dashboard I implemented two line graphs displaying BTC to USD and BTC to GBP over time.
+In terms of the dashboard I implemented two line graphs displaying 'BTC to USD' and 'BTC to GBP' over time.
 
 ## Next Step
 
