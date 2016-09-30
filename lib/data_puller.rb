@@ -13,7 +13,15 @@ class DataPuller
 
   def call_api
     response = Net::HTTP.get(uri)
-    @datastore << JSON.parse(response)
+    @call_time = DateTime.now.iso8601
+    @response = JSON.parse(response)
+  end
+
+  def format_values(currency, call_time = @call_time, response = @response)
+    @datastore << {
+      'buy': (response[currency]['buy'] * 100).floor,
+      'datetime': call_time
+    }
   end
 
 end
