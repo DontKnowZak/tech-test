@@ -6,10 +6,13 @@ require 'rufus-scheduler'
 scheduler = Rufus::Scheduler.new
 @data_pusher = DataPusher.new
 @data_puller = DataPuller.new
+#Enter below currencies you want to push to a dataset
+currencies = ['usd', 'gbp']
 
 scheduler.every '5m' do
-  pass_data('usd')
-  pass_data('gbp')
+  currencies.each do |currency|
+    pass_data(currency)
+  end
 end
 
 private
