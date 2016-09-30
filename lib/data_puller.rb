@@ -3,10 +3,9 @@ require 'json'
 
 class DataPuller
 
-  attr_reader :uri, :datastore, :url, :response, :call_time
+  attr_reader :uri, :url, :response, :call_time
 
   def initialize
-    @datastore = []
     @url = 'https://blockchain.info/ticker'
     @uri = URI(url)
   end
