@@ -11,16 +11,16 @@ class DataPusher
     @dataset
   end
 
-  def delete_dataset
-    client.datasets.delete('btc_to_usd.by_15_minute')
+  def delete_dataset(currency)
+    client.datasets.delete('btc_to_' + currency + '.by_5_minutes')
   end
 
-  def create_dataset
-    @dataset = client.datasets.find_or_create('btc_to_usd.by_15_minute', fields: {
-      'buy':{
+  def target_dataset(currency)
+    @dataset = client.datasets.find_or_create('btc_to_' + currency + '.by_5_minutes', fields: {
+      'last':{
         "type": "money",
-        "name": "Dollars",
-        "currency_code": "USD"
+        "name": currency,
+        "currency_code": currency.upcase
       },
       "datetime":{
         "type": "datetime",

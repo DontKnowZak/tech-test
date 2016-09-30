@@ -24,11 +24,11 @@ describe DataPuller do
       it 'puts the response of the get request into datastore array' do
         time = DateTime.now
         time_iso8601 = time.iso8601
-        allow(Net::HTTP).to receive(:get).and_return('{"USD":{"buy":604.25}}')
+        allow(Net::HTTP).to receive(:get).and_return('{"USD":{"last":604.25}}')
         allow(DateTime).to receive(:now).and_return(time)
         subject.call_api
         subject.format_values('USD')
-        expect(subject.datastore).to eq [{:buy=>60425, :datetime=>time_iso8601}]
+        expect(subject.datastore).to eq [{:last=>60425, :datetime=>time_iso8601}]
       end
     end
   end

@@ -19,7 +19,7 @@ class DataPuller
 
   def format_values(currency, call_time = @call_time, response = @response)
     @datastore << {
-      'buy': (response[currency]['buy'] * 100).floor,
+      'last': (response[currency.upcase]['last'] * 100).floor,
       'datetime': call_time
     }
   end

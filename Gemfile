@@ -8,3 +8,5 @@ ruby '2.3.1'
 gem 'rspec'
 
 gem 'geckoboard-ruby'
+
+gem 'rufus-scheduler'

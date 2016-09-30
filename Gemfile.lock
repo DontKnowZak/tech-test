@@ -16,6 +16,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    rufus-scheduler (3.2.2)
 
 PLATFORMS
   ruby
@@ -23,6 +24,7 @@ PLATFORMS
 DEPENDENCIES
   geckoboard-ruby
   rspec
+  rufus-scheduler
 
 RUBY VERSION
    ruby 2.3.1p112
